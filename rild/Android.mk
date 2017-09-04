@@ -1,5 +1,7 @@
 # Copyright 2006 The Android Open Source Project
 
+ifneq ($(BOARD_PROVIDES_RILD),true)
+
 LOCAL_PATH:= $(call my-dir)
 include $(CLEAR_VARS)
 
@@ -26,7 +28,7 @@ endif
 
 LOCAL_MODULE:= rild
 LOCAL_MODULE_TAGS := optional
-#LOCAL_INIT_RC := rild.rc
+LOCAL_INIT_RC := rild.rc
 
 LOCAL_C_INCLUDES += $(TARGET_OUT_HEADERS)/libril
 
@@ -49,3 +51,5 @@ LOCAL_MODULE:= radiooptions
 LOCAL_MODULE_TAGS := debug
 
 include $(BUILD_EXECUTABLE)
+
+endif
